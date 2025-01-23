@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Cast = () => {
-  return <div>1</div>;
+  return <div></div>;
 };
 
 export default Cast;
