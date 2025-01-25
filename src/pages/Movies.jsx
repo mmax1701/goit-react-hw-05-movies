@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [data, setData] = useState([]);
+  const location = useLocation();
   const searchStr = searchParams.get('query');
 
   useEffect(() => {
@@ -42,7 +43,9 @@ const Movies = () => {
           <ul>
             {data.map(({ id, original_title }) => (
               <li key={id}>
-                <Link to={`/movies/${id}`}>{original_title}</Link>
+                <Link to={`/movies/${id}`} state={{ from: location }}>
+                  {original_title}
+                </Link>
               </li>
             ))}
           </ul>

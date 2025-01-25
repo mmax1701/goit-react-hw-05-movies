@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     fetch(
@@ -20,7 +21,7 @@ const MovieDetails = () => {
   return (
     <div>
       <div>
-        <button>Go back</button>
+        <Link to={location.state?.from ?? '/'}>Go back</Link>
       </div>
       <div>
         <div>
